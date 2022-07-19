@@ -2,7 +2,7 @@
 //  ProfileHeaderView.swift
 //  NavigTest
 //
-//  Created by Mac on 16.07.2022.
+//  Created by Mac on 18.07.2022.
 //
 
 import UIKit
