@@ -7,66 +7,70 @@
 
 import UIKit
 
+
 class ProfileHeaderView: UIView {
    
-    var profileView: UIImageView!
-    var label: UILabel!
-        
-      let screenSize = UIScreen.main.bounds
-      
+lazy var profileView = UIImageView(frame: CGRect(x: 16, y: 96, width: 100, height: 100))
+lazy var label = UILabel (frame: CGRect(x: 137, y: 101, width: 150, height: 25))
+lazy var setstatus = UITextField (frame:CGRect(x:137, y:140, width: 150, height: 25))
+lazy var showbutton = UIButton(frame: CGRect(x: 16, y: 212, width: 360, height: 50))
+lazy var changedText: String = ""
+  
       override init(frame: CGRect){
         super.init(frame: frame)
-        profileView = UIImageView(frame: CGRect(x: 15, y: 115, width: 100, height: 100))
+        //profileView = UIImageView(frame: CGRect(x: 16, y: 96, width: 100, height: 100))
         profileView.backgroundColor = .gray
+        profileView.image = UIImage(named: "A330-300.jpg")
         profileView.layer.borderColor = UIColor.white.cgColor
-        profileView.layer.borderWidth = 4.0
+        profileView.layer.borderWidth = 3.0
         profileView.layer.cornerRadius = 50
-    
-       // profileView.autoSetDimension(.width, toSize: 124.0)
-       // profileView.autoSetDimension(.height, toSize: 124.0)
-        
+        profileView.layer.masksToBounds = true
         self.addSubview(profileView)
           
-          label = UILabel (frame: CGRect(x: 155, y: 155, width: 100, height: 50))
-          label.backgroundColor = .white
+         // label = UILabel (frame: CGRect(x: 137, y: 101, width: 150, height: 25))
+          label.backgroundColor = .lightGray
+          label.text = "В полете"
+          label.font.withSize(18)
+          label.font = UIFont(name:"HelveticaNeue-Bold", size: 18.0)
           self.addSubview(label)
-
-//-------------------
-//    let label = UILabel(frame: CGRect(x: 150, y: 350, width: 100, height: 20))
-//    let picture = UIImageView()
-//    let button = UIButton(frame: CGRect(x: 100, y: 300, width: 200, height: 50))
-//
-//    func updateText(_ text:String?) {
-//           guard let text = text else { return }
-//           label.text = text
-//       }
-//
-//       override init(frame: CGRect){
-//           super.init(frame: frame)
-//           label.translatesAutoresizingMaskIntoConstraints = false
-//           label.text = "OneView!"
-//           label.numberOfLines = 0
-//           label.textColor = .red
-//           label.textAlignment = .center
-//           button.backgroundColor = .blue
-//           button.layer.cornerRadius = 12
-//           button.setTitle("Push", for: .normal)
-//           self.addSubview(label)
-//           self.addSubview(button)
-//       }
-//
-//       override func layoutSubviews() {
-//           super.layoutSubviews()
-//           label.frame = bounds
-//           button.frame = bounds // не было вначале
-//       }
-//
-//       required init?(coder aDecoder: NSCoder) {
-//           fatalError("init(coder:) has not been implemented")
-//       }
+          
+         // setstatus = UITextField (frame:CGRect(x:137, y:140, width: 150, height: 25))
+          setstatus.placeholder = "Задайте статус"
+         // setstatus.becomeFirstResponder()     // этот метод вызовет экранную клавиатуру,но на симуляторе она тормозит
+          setstatus.font = UIFont.systemFont(ofSize: 15)
+          setstatus.keyboardType = UIKeyboardType.default
+          setstatus.returnKeyType = UIReturnKeyType.done
+          setstatus.clearButtonMode = UITextField.ViewMode.whileEditing;
+          setstatus.contentVerticalAlignment = UIControl.ContentVerticalAlignment.center
+          setstatus.addTarget(self, action: #selector(editingChanged), for: UIControl.Event.editingChanged)
+          self.addSubview(setstatus)
+          
+         // showbutton = UIButton(frame: CGRect(x: 16, y: 212, width: 360, height: 50))
+          showbutton.backgroundColor = .blue
+          showbutton.layer.cornerRadius = 4
+          showbutton.titleEdgeInsets.left = 16
+          showbutton.titleEdgeInsets.right = 16
+          showbutton.setTitle("Изменить статус", for: .normal)
+          showbutton.setTitleColor(.white, for: .normal)
+          showbutton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
+          showbutton.layer.shadowRadius = 4
+          showbutton.layer.shadowColor = UIColor.black.cgColor
+          showbutton.layer.shadowOffset = CGSize(width: 4, height: 4)
+          showbutton.layer.shadowOpacity = 0.7
+          showbutton.layer.masksToBounds = false
+          showbutton.addTarget(self, action: #selector(saveData), for: .touchUpInside)
+          showbutton.isUserInteractionEnabled = true
+          self.addSubview(showbutton)
 }
-    
+   
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    @objc func editingChanged(textField: UITextField) {
+        changedText = setstatus.text!
+    }
+    @objc func saveData(sender: UIButton) {
+        label.text = setstatus.text
+    }
 }
+
