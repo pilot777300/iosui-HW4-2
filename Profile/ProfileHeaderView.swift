@@ -10,15 +10,17 @@ import UIKit
 
 class ProfileHeaderView: UIView {
    
-lazy var profileView = UIImageView(frame: CGRect(x: 16, y: 96, width: 100, height: 100))
-lazy var status = UILabel (frame: CGRect(x: 137, y: 101, width: 150, height: 25))
-lazy var setStatus = UITextField (frame:CGRect(x:137, y:140, width: 150, height: 25))
-lazy var changeStatusButton = UIButton(frame: CGRect(x: 16, y: 212, width: 360, height: 50))
-lazy var changedText: String = ""
+  private  lazy var profileView = UIImageView()
+  private  lazy var name = UILabel()
+  private lazy var setStatus = UITextField()
+  private  lazy var changeStatusButton = UIButton()
+  private  lazy var newButton = UIButton()
+  private  lazy var status = UILabel()
+  private  lazy var changedText: String = ""
 
       override init(frame: CGRect){
         super.init(frame: frame)
-        //profileView = UIImageView(frame: CGRect(x: 16, y: 96, width: 100, height: 100))
+        
         profileView.backgroundColor = .gray
         profileView.image = UIImage(named: "A330-300.jpg")
         profileView.layer.borderColor = UIColor.white.cgColor
@@ -28,18 +30,19 @@ lazy var changedText: String = ""
           profileView.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(profileView)
           
-         // label = UILabel (frame: CGRect(x: 137, y: 101, width: 150, height: 25))
-          status.backgroundColor = .lightGray
-          status.text = "В полете"
-          status.font.withSize(18)
-          status.font = UIFont(name:"HelveticaNeue-Bold", size: 18.0)
-          status.translatesAutoresizingMaskIntoConstraints = false
-          self.addSubview(status)
+          name.backgroundColor = .lightGray
+          name.text = "Пилот квадрокоптера"
+          name.font.withSize(18)
+          name.font = UIFont.boldSystemFont(ofSize: 18)
+          name.translatesAutoresizingMaskIntoConstraints = false
+          self.addSubview(name)
           
-         // setstatus = UITextField (frame:CGRect(x:137, y:140, width: 150, height: 25))
           setStatus.placeholder = "Задайте статус"
-         // setstatus.becomeFirstResponder()     // этот метод вызовет экранную клавиатуру,но на симуляторе она тормозит
           setStatus.font = UIFont.systemFont(ofSize: 15)
+          setStatus.backgroundColor = .white
+          setStatus.layer.cornerRadius = 12
+          setStatus.layer.borderWidth = 1
+          setStatus.layer.borderColor = CGColor(red: 0, green: 0, blue: 255, alpha: 10)
           setStatus.keyboardType = UIKeyboardType.default
           setStatus.returnKeyType = UIReturnKeyType.done
           setStatus.clearButtonMode = UITextField.ViewMode.whileEditing;
@@ -47,12 +50,9 @@ lazy var changedText: String = ""
           setStatus.addTarget(self, action: #selector(editingChanged), for: UIControl.Event.editingChanged)
           setStatus.translatesAutoresizingMaskIntoConstraints = false
           self.addSubview(setStatus)
-          
-         // showbutton = UIButton(frame: CGRect(x: 16, y: 212, width: 360, height: 50))
+        
           changeStatusButton.backgroundColor = .blue
           changeStatusButton.layer.cornerRadius = 4
-          //changeStatusButton.titleEdgeInsets.left = 16
-          //changeStatusButton.titleEdgeInsets.right = 16
           changeStatusButton.setTitle("Изменить статус", for: .normal)
           changeStatusButton.setTitleColor(.white, for: .normal)
           changeStatusButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
@@ -65,44 +65,70 @@ lazy var changedText: String = ""
           changeStatusButton.isUserInteractionEnabled = true
           changeStatusButton.translatesAutoresizingMaskIntoConstraints = false
           self.addSubview(changeStatusButton)
+          
+          newButton.backgroundColor = .blue
+          newButton.layer.cornerRadius = 4
+          newButton.setTitle("Новая кнопка", for: .normal)
+          newButton.setTitleColor(.white, for: .normal)
+          newButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
+          newButton.translatesAutoresizingMaskIntoConstraints = false
+          self.addSubview(newButton)
+          
+          status.backgroundColor = .lightGray
+          status.text = "Ожидаю лучших времен"
+          status.textColor = .gray
+          status.translatesAutoresizingMaskIntoConstraints = false
+          self.addSubview(status)
+          
         setupConstrains()
 }
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
       private  func setupConstrains() {
              let safeArea = self.safeAreaLayoutGuide
           NSLayoutConstraint.activate([
+            
             profileView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: 16.0),
             profileView.widthAnchor.constraint(equalToConstant: 100),
             profileView.topAnchor.constraint(equalTo: safeArea.topAnchor, constant: 16.0),
             profileView.heightAnchor.constraint(equalToConstant: 100),
             
-            status.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: 137),
-            status.widthAnchor.constraint(equalToConstant: 150),
-            status.topAnchor.constraint(equalTo: safeArea.topAnchor, constant: 27),
-            status.heightAnchor.constraint(equalToConstant: 25),
+            name.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: 137),
+            name.widthAnchor.constraint(equalToConstant: 280),
+            name.topAnchor.constraint(equalTo: safeArea.topAnchor, constant: 17),
+            name.heightAnchor.constraint(equalToConstant: 25),
             
             setStatus.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: 137),
-            setStatus.widthAnchor.constraint(equalToConstant: 150),
-            setStatus.heightAnchor.constraint(equalToConstant: 25),
-            setStatus.bottomAnchor.constraint(equalTo: changeStatusButton.topAnchor, constant: -34),
+            setStatus.widthAnchor.constraint(equalToConstant: 200),
+            setStatus.heightAnchor.constraint(equalToConstant: 40),
+            setStatus.bottomAnchor.constraint(equalTo: changeStatusButton.topAnchor, constant: -10),
             
             changeStatusButton.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: 16),
             changeStatusButton.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor, constant: -16.0),
             changeStatusButton.topAnchor.constraint(equalTo: profileView.bottomAnchor, constant: 16),
-            changeStatusButton.heightAnchor.constraint(equalToConstant: 50)
+            changeStatusButton.heightAnchor.constraint(equalToConstant: 50),
+            
+            newButton.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor),
+            newButton.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor),
+            newButton.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor),
+            
+            status.bottomAnchor.constraint(equalTo: setStatus.topAnchor, constant: -8),
+            status.heightAnchor.constraint(equalToConstant: 20),
+            status.widthAnchor.constraint(equalToConstant: 250),
+            status.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: 137)
 
           ])
-        
     }
+    
     @objc func editingChanged(textField: UITextField) {
         changedText = setStatus.text!
     }
+    
     @objc func buttonPressed(sender: UIButton) {
         status.text = changedText
     }
-
 }
 

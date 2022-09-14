@@ -14,17 +14,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
-       // let feedViewController = UINavigationController(rootViewController: FeedViewController())
-       // let profileViewController = UINavigationController(rootViewController: ProfileViewController())
-       // let tabBarController = UITabBarController()
-       // tabBarController.viewControllers = [feedViewController, profileViewController]
-        window = UIWindow(frame: UIScreen.main.bounds)
-            //   let home = tabBarController
-               self.window?.rootViewController = createTabBarController()
-               window?.makeKeyAndVisible()
-               window?.windowScene = windowScene
-        guard let _ = (scene as? UIWindowScene) else { return }
+      
+        self.window = UIWindow(windowScene: windowScene)
+        self.window?.rootViewController = createTabBarController()
+        self.window?.makeKeyAndVisible()
+        
     }
+    
     func createFeedViewController() -> UINavigationController {
     let feedViewController = FeedViewController()
         feedViewController.title = "Лента"

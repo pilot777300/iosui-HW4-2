@@ -11,14 +11,11 @@
 		04BB675F28784A9700161ABA /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BB675E28784A9700161ABA /* FeedViewController.swift */; };
 		04BB676128784AA600161ABA /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BB676028784AA600161ABA /* ProfileViewController.swift */; };
 		04BB6763287858F400161ABA /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BB6762287858F400161ABA /* PostViewController.swift */; };
-		04BB67652878641100161ABA /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BB67642878641000161ABA /* Post.swift */; };
 		04BB67672878707400161ABA /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BB67662878707400161ABA /* InfoViewController.swift */; };
 		04C05DC92877241F006747AC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C05DC82877241F006747AC /* AppDelegate.swift */; };
 		04C05DCB2877241F006747AC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C05DCA2877241F006747AC /* SceneDelegate.swift */; };
-		04C05DCD2877241F006747AC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C05DCC2877241F006747AC /* ViewController.swift */; };
 		04C05DD228772424006747AC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04C05DD128772424006747AC /* Assets.xcassets */; };
 		04C05DD528772424006747AC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04C05DD328772424006747AC /* LaunchScreen.storyboard */; };
-		04C05DDD28774A97006747AC /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C05DDC28774A96006747AC /* TabBarViewController.swift */; };
 		04EDAC5E288AE5C700E8F6D9 /* A330-300.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 04EDAC5D288AE5C700E8F6D9 /* A330-300.jpg */; };
 /* End PBXBuildFile section */
 
@@ -27,16 +24,13 @@
 		04BB675E28784A9700161ABA /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		04BB676028784AA600161ABA /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		04BB6762287858F400161ABA /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
-		04BB67642878641000161ABA /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		04BB67662878707400161ABA /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		04C05DC52877241F006747AC /* NavigTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NavigTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04C05DC82877241F006747AC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		04C05DCA2877241F006747AC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		04C05DCC2877241F006747AC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		04C05DD128772424006747AC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		04C05DD428772424006747AC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		04C05DD628772424006747AC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		04C05DDC28774A96006747AC /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		04EDAC5D288AE5C700E8F6D9 /* A330-300.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "A330-300.jpg"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -84,11 +78,8 @@
 				04C05DC82877241F006747AC /* AppDelegate.swift */,
 				04C05DCA2877241F006747AC /* SceneDelegate.swift */,
 				04BB675E28784A9700161ABA /* FeedViewController.swift */,
-				04BB67642878641000161ABA /* Post.swift */,
 				04BB6762287858F400161ABA /* PostViewController.swift */,
 				04BB67662878707400161ABA /* InfoViewController.swift */,
-				04C05DDC28774A96006747AC /* TabBarViewController.swift */,
-				04C05DCC2877241F006747AC /* ViewController.swift */,
 				04C05DD128772424006747AC /* Assets.xcassets */,
 				04C05DD328772424006747AC /* LaunchScreen.storyboard */,
 				04C05DD628772424006747AC /* Info.plist */,
@@ -168,11 +159,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				04BB676128784AA600161ABA /* ProfileViewController.swift in Sources */,
-				04C05DDD28774A97006747AC /* TabBarViewController.swift in Sources */,
 				04BB6763287858F400161ABA /* PostViewController.swift in Sources */,
-				04BB67652878641100161ABA /* Post.swift in Sources */,
 				04BB67672878707400161ABA /* InfoViewController.swift in Sources */,
-				04C05DCD2877241F006747AC /* ViewController.swift in Sources */,
 				04BB675F28784A9700161ABA /* FeedViewController.swift in Sources */,
 				045EF5EF288567E700D67C0E /* ProfileHeaderView.swift in Sources */,
 				04C05DC92877241F006747AC /* AppDelegate.swift in Sources */,

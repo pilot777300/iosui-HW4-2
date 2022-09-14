@@ -9,6 +9,8 @@ import UIKit
 
 class InfoViewController: UIViewController {
 
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBlue
@@ -20,7 +22,7 @@ class InfoViewController: UIViewController {
                 button.setTitleColor(.systemGray5, for: .normal)
                 button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 17)
                 button.addTarget(self, action: #selector(showAlert), for: .touchUpInside)
-                button.translatesAutoresizingMaskIntoConstraints = true
+               
         self.view.addSubview(button)
     }
     
