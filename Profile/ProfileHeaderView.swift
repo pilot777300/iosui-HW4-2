@@ -10,75 +10,95 @@ import UIKit
 
 class ProfileHeaderView: UIView {
    
-  private  lazy var profileView = UIImageView()
-  private  lazy var name = UILabel()
-  private lazy var setStatus = UITextField()
-  private  lazy var changeStatusButton = UIButton()
-  private  lazy var newButton = UIButton()
-  private  lazy var status = UILabel()
-  private  lazy var changedText: String = ""
-
+    private  lazy var profileView: UIImageView = {
+        let  pv = UIImageView()
+          pv.backgroundColor = .gray
+          pv.image = UIImage(named: "A330-300.jpg")
+          pv.layer.borderColor = UIColor.white.cgColor
+          pv.layer.borderWidth = 3.0
+          pv.layer.cornerRadius = 50
+          pv.layer.masksToBounds = true
+          pv.translatesAutoresizingMaskIntoConstraints = false
+        return pv
+    }()
+    
+    
+    private  lazy var name: UILabel = {
+        let nm = UILabel()
+        nm.backgroundColor = .lightGray
+        nm.text = "Пилот квадрокоптера"
+        nm.font.withSize(18)
+        nm.font = UIFont.boldSystemFont(ofSize: 18)
+        nm.translatesAutoresizingMaskIntoConstraints = false
+        return nm
+    }()
+    
+    
+    private lazy var setStatus: UITextField = {
+        let ss = UITextField()
+        ss.placeholder = "Задайте статус"
+        ss.font = UIFont.systemFont(ofSize: 15)
+        ss.backgroundColor = .white
+        ss.layer.cornerRadius = 12
+        ss.layer.borderWidth = 1
+        ss.layer.borderColor = CGColor(red: 0, green: 0, blue: 255, alpha: 10)
+        ss.keyboardType = UIKeyboardType.default
+        ss.returnKeyType = UIReturnKeyType.done
+        ss.clearButtonMode = UITextField.ViewMode.whileEditing;
+        ss.contentVerticalAlignment = UIControl.ContentVerticalAlignment.center
+        ss.translatesAutoresizingMaskIntoConstraints = false
+        return ss
+    }()
+    
+    
+    private  lazy var changeStatusButton: UIButton = {
+        let csb = UIButton()
+        csb.backgroundColor = .blue
+        csb.layer.cornerRadius = 4
+        csb.setTitle("Изменить статус", for: .normal)
+        csb.setTitleColor(.white, for: .normal)
+        csb.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
+        csb.layer.shadowRadius = 4
+        csb.layer.shadowColor = UIColor.black.cgColor
+        csb.layer.shadowOffset = CGSize(width: 4, height: 4)
+        csb.layer.shadowOpacity = 0.7
+        csb.layer.masksToBounds = false
+        csb.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
+        csb.isUserInteractionEnabled = true
+        csb.translatesAutoresizingMaskIntoConstraints = false
+        return csb
+    }()
+    
+    
+    private  lazy var newButton: UIButton = {
+       let nb = UIButton()
+        nb.backgroundColor = .blue
+        nb.layer.cornerRadius = 4
+        nb.setTitle("Новая кнопка", for: .normal)
+        nb.setTitleColor(.white, for: .normal)
+        nb.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
+        nb.translatesAutoresizingMaskIntoConstraints = false
+        return nb
+    }()
+    
+    
+    private lazy var status: UILabel = {
+        let st = UILabel()
+        st.backgroundColor = .lightGray
+        st.text = "Ожидаю лучших времен"
+        st.textColor = .gray
+        st.translatesAutoresizingMaskIntoConstraints = false
+        return st
+    }()
+  
       override init(frame: CGRect){
         super.init(frame: frame)
-        
-        profileView.backgroundColor = .gray
-        profileView.image = UIImage(named: "A330-300.jpg")
-        profileView.layer.borderColor = UIColor.white.cgColor
-        profileView.layer.borderWidth = 3.0
-        profileView.layer.cornerRadius = 50
-        profileView.layer.masksToBounds = true
-          profileView.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(profileView)
-          
-          name.backgroundColor = .lightGray
-          name.text = "Пилот квадрокоптера"
-          name.font.withSize(18)
-          name.font = UIFont.boldSystemFont(ofSize: 18)
-          name.translatesAutoresizingMaskIntoConstraints = false
-          self.addSubview(name)
-          
-          setStatus.placeholder = "Задайте статус"
-          setStatus.font = UIFont.systemFont(ofSize: 15)
-          setStatus.backgroundColor = .white
-          setStatus.layer.cornerRadius = 12
-          setStatus.layer.borderWidth = 1
-          setStatus.layer.borderColor = CGColor(red: 0, green: 0, blue: 255, alpha: 10)
-          setStatus.keyboardType = UIKeyboardType.default
-          setStatus.returnKeyType = UIReturnKeyType.done
-          setStatus.clearButtonMode = UITextField.ViewMode.whileEditing;
-          setStatus.contentVerticalAlignment = UIControl.ContentVerticalAlignment.center
-          setStatus.addTarget(self, action: #selector(editingChanged), for: UIControl.Event.editingChanged)
-          setStatus.translatesAutoresizingMaskIntoConstraints = false
-          self.addSubview(setStatus)
-        
-          changeStatusButton.backgroundColor = .blue
-          changeStatusButton.layer.cornerRadius = 4
-          changeStatusButton.setTitle("Изменить статус", for: .normal)
-          changeStatusButton.setTitleColor(.white, for: .normal)
-          changeStatusButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
-          changeStatusButton.layer.shadowRadius = 4
-          changeStatusButton.layer.shadowColor = UIColor.black.cgColor
-          changeStatusButton.layer.shadowOffset = CGSize(width: 4, height: 4)
-          changeStatusButton.layer.shadowOpacity = 0.7
-          changeStatusButton.layer.masksToBounds = false
-          changeStatusButton.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
-          changeStatusButton.isUserInteractionEnabled = true
-          changeStatusButton.translatesAutoresizingMaskIntoConstraints = false
-          self.addSubview(changeStatusButton)
-          
-          newButton.backgroundColor = .blue
-          newButton.layer.cornerRadius = 4
-          newButton.setTitle("Новая кнопка", for: .normal)
-          newButton.setTitleColor(.white, for: .normal)
-          newButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
-          newButton.translatesAutoresizingMaskIntoConstraints = false
-          self.addSubview(newButton)
-          
-          status.backgroundColor = .lightGray
-          status.text = "Ожидаю лучших времен"
-          status.textColor = .gray
-          status.translatesAutoresizingMaskIntoConstraints = false
-          self.addSubview(status)
+        self.addSubview(name)
+        self.addSubview(setStatus)
+        self.addSubview(changeStatusButton)
+        self.addSubview(newButton)
+        self.addSubview(status)
           
         setupConstrains()
 }
@@ -88,7 +108,8 @@ class ProfileHeaderView: UIView {
     }
     
       private  func setupConstrains() {
-             let safeArea = self.safeAreaLayoutGuide
+             
+          let safeArea = self.safeAreaLayoutGuide
           NSLayoutConstraint.activate([
             
             profileView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: 16.0),
@@ -102,7 +123,7 @@ class ProfileHeaderView: UIView {
             name.heightAnchor.constraint(equalToConstant: 25),
             
             setStatus.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: 137),
-            setStatus.widthAnchor.constraint(equalToConstant: 200),
+            setStatus.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor, constant: -12),
             setStatus.heightAnchor.constraint(equalToConstant: 40),
             setStatus.bottomAnchor.constraint(equalTo: changeStatusButton.topAnchor, constant: -10),
             
@@ -123,12 +144,8 @@ class ProfileHeaderView: UIView {
           ])
     }
     
-    @objc func editingChanged(textField: UITextField) {
-        changedText = setStatus.text!
-    }
-    
     @objc func buttonPressed(sender: UIButton) {
-        status.text = changedText
+        status.text = setStatus.text!
     }
 }
 
